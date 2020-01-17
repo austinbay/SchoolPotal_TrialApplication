@@ -9,12 +9,13 @@ import { AuthService } from '../../../_services/auth.service';
 })
 export class AppLayoutComponent implements OnInit {
 
+	userName: string;
 	constructor(private authService: AuthService) {
 
 	}
 
 	ngOnInit() {
-
+		this.userName = this.authService.getUserName();
 	}
 
 	logout() {

@@ -48,7 +48,7 @@ export class AuthService {
 	}
 	// After login save token and other values(if any) in localStorage
 	storeTokens(resp: TokenData) {
-		localStorage.setItem('name', resp.firstName);
+		localStorage.setItem('userName', resp.firstName);
 		localStorage.setItem('access_token', resp.accessToken);
 		localStorage.setItem('refresh_token', resp.refreshToken);
 	
@@ -73,7 +73,10 @@ export class AuthService {
 
 		return localStorage.getItem("refresh_token");
 	}
+	getUserName() {
 
+		return localStorage.getItem("userName");
+	}
 	// Get data from server for Dashboard
 	getData(): Observable<WeatherForecast> {
 		return this.http.get<WeatherForecast>(this.apiUrl + 'GetWeatherForecast', this.httpOptions);

@@ -393,7 +393,7 @@ namespace SchoolPortal.Logic.BusinessLogic
 
                 var baseUrl = _configuration["AngularAppUrl"]; //_emailHelper.GetApplicationBaseUrl();
                 //var callBackUrl = string.Format("{0}/confirmemail?userId={1}&code={2}", baseUrl, HttpUtility.UrlEncode(user.Id.ToString()), HttpUtility.UrlEncode(token));
-                var callBackUrl = string.Format("{0}/confirmemail/{1}/{2}", baseUrl, user.Id.ToString(), HttpUtility.UrlEncode(token));
+                var callBackUrl = string.Format("{0}/confirmemail/{1}/{2}", baseUrl, user.Id, HttpUtility.UrlEncode(token.Trim()));
                 _emailManager.SendAccountConfirmationEmail(user.FirstName, user.Email, callBackUrl);
 
             }

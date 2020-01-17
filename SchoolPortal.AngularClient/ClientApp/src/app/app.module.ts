@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DxDataGridModule, DxButtonModule, DxDateBoxModule } from 'devextreme-angular';
 import { BlockUIModule } from 'ng-block-ui';
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -64,7 +65,9 @@ import { MustMatchDirective } from './_helpers/MustMatchDirective';
 		DxDataGridModule,
 		DxButtonModule,
 		DxDateBoxModule,
-		BlockUIModule.forRoot()
+		BlockUIModule.forRoot(),
+		DlDateTimeDateModule,   
+		DlDateTimePickerModule,
 	],
 	providers: [
 		AuthGuard,

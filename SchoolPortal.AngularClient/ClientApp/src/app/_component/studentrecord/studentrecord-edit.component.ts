@@ -44,6 +44,7 @@ export class StudentrecordEditComponent implements OnInit {
 				this.blockUI.stop();
 				if (response.isSuccess) {
 					this.model = response.data;
+					//this.model.dateOfBirth = new Date(response.data.dateOfBirth);
 
 				} else {
 					Swal.fire('Error!', response.errorMessage, 'error');

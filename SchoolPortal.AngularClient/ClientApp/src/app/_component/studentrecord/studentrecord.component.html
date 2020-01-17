@@ -4,7 +4,7 @@
 
   <div class="card">
     <div class="card-header">
-      <h4 class="card-title">{{formTitle}} <a [routerLink]="['/addstudent']" class="btn btn-primary float-right mb-3">New Student</a></h4>
+      <h5 class="m-0 font-weight-bold text-primary">{{formTitle}} <a [routerLink]="['/addstudent']" class="btn btn-primary float-right mb-3">New Student</a></h5>
     </div>
     <div class="card-body">
 
@@ -36,7 +36,7 @@
           <dxi-column dataField="lastName" dataType="string"></dxi-column>
           <dxi-column dataField="gender" dataType="string"></dxi-column>
           <dxi-column dataField="phoneNumber" dataType="string"></dxi-column>
-          <dxi-column dataField="dateOfBirth" dataType="date"></dxi-column>
+          <dxi-column dataField="dateOfBirth" dataType="date" format="d/M/yyyy"></dxi-column>
           <dxi-column dataField="dateCreated" dataType="date"></dxi-column>
           <dxi-column dataField="createdByName" dataType="string" caption="Created By"></dxi-column>
           <dxi-column caption="Actions" [width]="80" cellTemplate="actionsTemplate"></dxi-column>
@@ -55,7 +55,7 @@
         </dx-data-grid>
 
       </div>
-       
+
 
     </div>
 

@@ -1,0 +1,66 @@
+
+
+
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">{{formTitle}} <a [routerLink]="['/studentrecord']" class="btn btn-primary float-right mb-3">Back to List</a></h4>
+  </div>
+  <div class="card-body">
+
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+          <div *ngIf="firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+          <div *ngIf="lastName.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gender.invalid }" required />
+        <div *ngIf="f.submitted && gender.invalid" class="invalid-feedback">
+          <div *ngIf="gender.errors.required">Gender is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="model.phoneNumber" #phoneNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneNumber.invalid }" required />
+        <div *ngIf="f.submitted && phoneNumber.invalid" class="invalid-feedback">
+          <div *ngIf="phoneNumber.errors.required">Phone Number is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateofbirth">Date of Birth</label>
+        <input type="text" class="form-control" name="dateofbirth" [(ngModel)]="model.dateofbirth" #dateofbirth="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dateofbirth.invalid }" required />
+        <div *ngIf="f.submitted && dateofbirth.invalid" class="invalid-feedback">
+          <div *ngIf="dateofbirth.errors.required">Date of Birth is required</div>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Date</div>
+        <div class="dx-field-value">
+          <dx-date-box [value]="now"
+                       type="date">
+          </dx-date-box>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <button type="submit" class="btn btn-success float-right">Submit</button>
+          <button class="btn btn-danger float-left" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+

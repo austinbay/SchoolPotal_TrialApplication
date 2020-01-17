@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeneralHelper.Lib\GeneralHelper.Lib.csproj" />
+    <ProjectReference Include="..\MessageManager.Lib\MessageManager.Lib.csproj" />
+    <ProjectReference Include="..\SchoolPortal.Data\SchoolPortal.Data.csproj" />
+    <ProjectReference Include="..\SchoolPortal.Models\SchoolPortal.Models.csproj" />
+  </ItemGroup>
+
+</Project>

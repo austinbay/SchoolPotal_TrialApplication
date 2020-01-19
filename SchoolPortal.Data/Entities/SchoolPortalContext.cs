@@ -122,44 +122,20 @@ namespace SchoolPortal.Data.Entities
 
             modelBuilder.Entity<RefreshToken>(entity =>
             {
-                entity.Property(e => e.TokenExpiration).HasColumnType("datetime");
-
-                entity.Property(e => e.Value).IsRequired();
+                entity.HasIndex(e => e.UserId);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.RefreshToken)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_RefreshToken_AspNetUsers");
+                    .HasForeignKey(d => d.UserId);
             });
 
             modelBuilder.Entity<StudentRecord>(entity =>
             {
-                entity.Property(e => e.DateCreated).HasColumnType("datetime");
-
-                entity.Property(e => e.DateOfBirth).HasColumnType("date");
-
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Gender)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.LastName)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.PhoneNumber)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.HasIndex(e => e.CreatedBy);
 
                 entity.HasOne(d => d.CreatedByNavigation)
                     .WithMany(p => p.StudentRecord)
-                    .HasForeignKey(d => d.CreatedBy)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_StudentRecord_AspNetUsers");
+                    .HasForeignKey(d => d.CreatedBy);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -150,7 +150,7 @@ namespace SchoolPortal.WebApi
                     var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
 
                     // auto migration
-                    //context.Database.EnsureCreated();
+                   
                     context.Database.Migrate();
 
                     // Seed the database.
@@ -167,24 +167,26 @@ namespace SchoolPortal.WebApi
                     var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
                     var dBcontext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-                   
 
-                    var user = userManager.FindByEmailAsync("austinokpakokomo@gmail.com").Result;
+                    var defaultUserEmail = "admin@gmail.com";
+                    var defaultUserPassword = "Admin@123";
+
+                    var user = userManager.FindByEmailAsync(defaultUserEmail).Result;
                     if (user == null)
                     {
                        
-                        var adminUser = new ApplicationUser
+                        var defaultUser = new ApplicationUser
                         {
-                            UserName = "austinokpakokomo@gmail.com",
-                            Email = "austinokpakokomo@gmail.com",
-                            PhoneNumber = "08175925329",
-                            FirstName = "Austin",
-                            LastName = "Admin",
+                            UserName = defaultUserEmail,
+                            Email = defaultUserEmail,
+                            PhoneNumber = "08173294532",
+                            FirstName = "Johnson",
+                            LastName = "Obama",
                             IsActive = true,                         
                             EmailConfirmed = true,
                             PhoneNumberConfirmed = true,
                         };
-                        var result = userManager.CreateAsync(adminUser, "Password@123").Result;
+                        var result = userManager.CreateAsync(defaultUser, defaultUserPassword).Result;
                         
                     }                   
                 }

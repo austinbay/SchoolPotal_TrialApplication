@@ -34,6 +34,7 @@ namespace SchoolPortal.Data.Entities
         public string LastName { get; set; }
         public DateTime DateRegistered { get; set; }
         public bool IsActive { get; set; }
+        public string SecurityToken { get; set; }
 
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }

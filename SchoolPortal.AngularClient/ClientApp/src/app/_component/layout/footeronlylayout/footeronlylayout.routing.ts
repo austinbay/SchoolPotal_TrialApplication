@@ -12,5 +12,5 @@ export const FOOTERONLYLAYOUT_ROUTES: Routes = [
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'register', component: RegisterComponent },
-	{ path: 'confirmemail/:userId/:code', component: ConfirmemailComponent }
+	{ path: 'confirmemail/:userId/:token', component: ConfirmemailComponent }
 ];

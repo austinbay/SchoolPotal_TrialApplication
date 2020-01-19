@@ -152,14 +152,21 @@ namespace SchoolPortal.Logic.BusinessLogic
                 {
                     throw new Exception("Confirm password does't match");
                 }
-                var user = await _userManager.FindByIdAsync(model.UserId);
-                if (user == null)
-                    throw new Exception("User info NOT found");
+                var userEntity = _aspNetUserRepository.Get().SingleOrDefault(c => c.Id == model.UserId && c.SecurityToken == model.Token);
+                if (userEntity == null)
+                {
+                    throw new Exception("Confirmation failed, invalid verification token!");
+                }
 
+                var user = await _userManager.FindByIdAsync(model.UserId.ToString());
+
+                 
                 if (user.EmailConfirmed && await _userManager.HasPasswordAsync(user))
                     throw new Exception("Your account has been confirmed already!");
 
-                var confirmResult = await _userManager.ConfirmEmailAsync(user, model.Code);
+                var confirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                var confirmResult = await _userManager.ConfirmEmailAsync(user, confirmationToken);
                 if (!confirmResult.Succeeded)
                     throw new Exception(confirmResult.Errors.FirstOrDefault().Description);
 
@@ -391,9 +398,17 @@ namespace SchoolPortal.Logic.BusinessLogic
 
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
+                var securityToken = DateTime.Now.ToString("MMddmmssff");
+
+                var userEntity = GetAspNetUserEntity(user.Id);
+                userEntity.SecurityToken = securityToken;
+                _aspNetUserRepository.Update(userEntity);
+                _unitOfWork.Commit();
+
                 var baseUrl = _configuration["AngularAppUrl"]; //_emailHelper.GetApplicationBaseUrl();
+          
                 //var callBackUrl = string.Format("{0}/confirmemail?userId={1}&code={2}", baseUrl, HttpUtility.UrlEncode(user.Id.ToString()), HttpUtility.UrlEncode(token));
-                var callBackUrl = string.Format("{0}/confirmemail/{1}/{2}", baseUrl, user.Id, HttpUtility.UrlEncode(token.Trim()));
+                var callBackUrl = string.Format("{0}/confirmemail/{1}/{2}", baseUrl, user.Id, securityToken);
                 _emailManager.SendAccountConfirmationEmail(user.FirstName, user.Email, callBackUrl);
 
             }

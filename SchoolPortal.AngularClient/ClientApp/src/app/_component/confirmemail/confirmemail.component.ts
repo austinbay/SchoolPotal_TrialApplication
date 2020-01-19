@@ -22,8 +22,8 @@ export class ConfirmemailComponent implements OnInit {
 		if (this.avRoute.snapshot.params['userId']) {
 			this.model.userId = this.avRoute.snapshot.params['userId'];
 		}
-		if (this.avRoute.snapshot.params['code']) {
-			this.model.code = this.avRoute.snapshot.params['code'];
+		if (this.avRoute.snapshot.params['token']) {
+			this.model.token = this.avRoute.snapshot.params['token'];
 		}
 	}
 	submitForm() {

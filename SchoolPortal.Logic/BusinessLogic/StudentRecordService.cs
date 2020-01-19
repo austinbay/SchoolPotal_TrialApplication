@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SchoolPortal.Logic.Utilities;
 using Microsoft.Extensions.Configuration;
+using StudentRecord = SchoolPortal.Data.Entities.StudentRecord;
 
 namespace SchoolPortal.Logic.BusinessLogic
 {

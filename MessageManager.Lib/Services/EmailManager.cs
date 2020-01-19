@@ -37,7 +37,7 @@ namespace MessageManager.Lib.Services
 
            .Replace("{companyLogo}", logoUrl)
 
-           .Replace("{verificationUrl}", callBackUrl)
+           .Replace("[verificationUrl]", callBackUrl)
 
            .Replace("{receiverName}", receiverName);
 

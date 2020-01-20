@@ -22,6 +22,8 @@
     "@auth0/angular-jwt": "^3.0.1",
     "angular-bootstrap-datetimepicker": "^4.0.2",
     "bootstrap": "^4.4.1",
+    "browserslist": "^4.8.3",
+    "caniuse-lite": "^1.0.30001021",
     "devextreme": "^19.2.5",
     "devextreme-angular": "^19.2.5",
     "devextreme-aspnet-data-nojquery": "^2.5.1",
